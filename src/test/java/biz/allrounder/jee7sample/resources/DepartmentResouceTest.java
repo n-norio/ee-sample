@@ -43,10 +43,10 @@ public class DepartmentResouceTest {
 	public void add() throws JsonProcessingException {
 
 		Map<Object, Object> dept = new HashMap<>();
-		dept.put("name", "nori");
+		dept.put("name", "john");
 		List<Object> persons = new ArrayList<>();
 		Map<Object, Object> director = new HashMap<>();
-		director.put("name", "sumi");
+		director.put("name", "sum");
 		director.put("position", "boss");
 		persons.add(director);
 		dept.put("persons", persons);
@@ -82,8 +82,8 @@ public class DepartmentResouceTest {
 			    .get(new GenericType<Map<Object, Object>>() {});
 		dept.put("name", "");
 		List<Object> persons = ArrayList.class.cast(dept.get("persons"));
-		Map<Object, Object> norio = HashMap.class.cast(persons.get(0));
-		norio.put("position", "bigBoss");
+		Map<Object, Object> john = HashMap.class.cast(persons.get(0));
+		john.put("position", "bigBoss");
 		
 		Map<Object, Object> director2 = new HashMap<>();
 		director2.put("name", "");
