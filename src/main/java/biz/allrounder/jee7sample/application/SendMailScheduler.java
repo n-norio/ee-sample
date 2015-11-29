@@ -2,12 +2,17 @@ package biz.allrounder.jee7sample.application;
 
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
+import javax.inject.Inject;
 
 @Singleton
 public class SendMailScheduler {
 
-	@Schedule(second = "*/10", minute = "*", hour = "*", persistent = false)
+	@Inject
+	private DepartmentService departmentService;
+	
+	@Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
 	public void sendMail() {
-		System.out.println("sent mail!");
+		departmentService.sendMailWithNewTx();
+		System.out.println("sent mail!");	
 	}
 }

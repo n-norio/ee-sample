@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import javax.interceptor.ExcludeDefaultInterceptors;
 import javax.persistence.NoResultException;
 
 import biz.allrounder.jee7sample.domain.model.Department;
@@ -61,5 +64,11 @@ public class DepartmentService {
 	@Asynchronous
 	public void sendMail() {
 		System.out.println("send mail.");
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@ExcludeDefaultInterceptors
+	public void sendMailWithNewTx() {
+		System.out.println("sent mail with new tx.");
 	}
 }
