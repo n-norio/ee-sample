@@ -1,0 +1,1 @@
+INSERT INTO ITEM (ID, NAME, LABEL) values (1, 'acctId', '口座番号')
