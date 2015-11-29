@@ -80,13 +80,13 @@ public class DepartmentResouceTest {
 			    .target("http://localhost:8080/jee7sample/api/departments/1")
 			    .request()
 			    .get(new GenericType<Map<Object, Object>>() {});
-		dept.put("name", "");
+		dept.put("name", "person1");
 		List<Object> persons = ArrayList.class.cast(dept.get("persons"));
 		Map<Object, Object> john = HashMap.class.cast(persons.get(0));
 		john.put("position", "bigBoss");
 		
 		Map<Object, Object> director2 = new HashMap<>();
-		director2.put("name", "");
+		director2.put("name", "person2");
 		director2.put("position", "assistant");
 		persons.add(director2);
 		

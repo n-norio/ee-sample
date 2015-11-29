@@ -3,7 +3,9 @@ package biz.allrounder.jee7sample.application;
 import java.util.Collection;
 import java.util.Optional;
 
+import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 
@@ -11,6 +13,7 @@ import biz.allrounder.jee7sample.domain.model.Department;
 import biz.allrounder.jee7sample.domain.model.DepartmentRepository;
 import biz.allrounder.jee7sample.domain.model.Person;
 import biz.allrounder.jee7sample.domain.model.PersonRepository;
+import biz.allrounder.jee7sample.domain.model.PersonWasRegisted;
 import biz.allrounder.jee7sample.exception.ProjectApplicationException;
 
 @Singleton
@@ -20,6 +23,8 @@ public class DepartmentService {
 	private DepartmentRepository departmentRepository;
 	@Inject 
 	private PersonRepository personRepository;
+	@Inject
+	private Event<PersonWasRegisted> events;
 	
 	public Collection<Department> find() {
 		return departmentRepository.find();
@@ -34,6 +39,7 @@ public class DepartmentService {
 	
 	public void persist(Department department) {
 		departmentRepository.save(department);
+		events.fire(new PersonWasRegisted());
 	}
 	
 	public void update(Long deptId, Department updatedDepartment) {
@@ -50,5 +56,10 @@ public class DepartmentService {
 				personOpt.ifPresent(person -> person.merge(updatedPerson));	
 			}
 		}
+	}
+	
+	@Asynchronous
+	public void sendMail() {
+		System.out.println("send mail.");
 	}
 }
