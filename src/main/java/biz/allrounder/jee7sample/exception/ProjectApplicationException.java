@@ -2,7 +2,7 @@ package biz.allrounder.jee7sample.exception;
 
 import javax.ejb.ApplicationException;
 
-@ApplicationException
+@ApplicationException(rollback=true, inherited=true)
 public class ProjectApplicationException extends RuntimeException {
 
 	/**

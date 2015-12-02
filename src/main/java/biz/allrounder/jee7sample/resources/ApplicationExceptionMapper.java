@@ -18,7 +18,7 @@ public class ApplicationExceptionMapper implements ExceptionMapper<ProjectApplic
 	public Response toResponse(ProjectApplicationException exception) {
 		if (exception.getCause() != null) {
 			if (exception.getCause() instanceof NoResultException) {
-				return Response.status(Status.NOT_FOUND).build();
+				return Response.status(Status.NOT_FOUND).type(MediaType.APPLICATION_JSON_TYPE).build();
 			}
 		}
 		

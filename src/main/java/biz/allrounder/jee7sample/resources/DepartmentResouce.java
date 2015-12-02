@@ -3,7 +3,7 @@ package biz.allrounder.jee7sample.resources;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -19,7 +19,7 @@ import biz.allrounder.jee7sample.application.DepartmentService;
 import biz.allrounder.jee7sample.domain.model.Department;
 
 @Path("/departments")
-@ApplicationScoped
+@RequestScoped
 public class DepartmentResouce {
 
 	@Inject
@@ -39,8 +39,8 @@ public class DepartmentResouce {
 	@Path("/{deptId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public DepartmentJsonView get(@PathParam("deptId") Long deptId) {
-		Department department = departmentService.get(new Long(deptId));
+	public DepartmentJsonView get(@PathParam("deptId") long deptId) {
+		Department department = departmentService.get(deptId);
 		return DepartmentJsonView.valueOf(department);
 	}
 	
@@ -53,7 +53,7 @@ public class DepartmentResouce {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{deptId}")
-	public void update(@PathParam("deptId") Long deptId, @Valid DepartmentJsonView department) {
+	public void update(@PathParam("deptId") long deptId, @Valid DepartmentJsonView department) {
 		departmentService.update(deptId, department.buildProject());
 	}
 }
