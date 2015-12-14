@@ -42,10 +42,10 @@ public class DepartmentResouceTest {
 	public void add() throws JsonProcessingException {
 
 		Map<Object, Object> dept = new HashMap<>();
-		dept.put("name", "");
+		dept.put("name", "b");
 		List<Object> persons = new ArrayList<>();
 		Map<Object, Object> director = new HashMap<>();
-		director.put("name", "");
+		director.put("name", "a");
 		director.put("position", "boss");
 		persons.add(director);
 		dept.put("persons", persons);
@@ -67,7 +67,7 @@ public class DepartmentResouceTest {
 //		System.out.println(json);
 //		
 		response = ClientBuilder.newClient()
-			    .target("http://localhost:8080/jee7sample/api/departments/d")
+			    .target("http://localhost:8080/jee7sample/api/departments/1")
 			    .request(MediaType.APPLICATION_JSON)
 			    .get();
 		System.out.println(response.getStatus());
