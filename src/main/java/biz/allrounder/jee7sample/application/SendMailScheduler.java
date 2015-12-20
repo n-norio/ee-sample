@@ -10,7 +10,7 @@ public class SendMailScheduler {
 	@Inject
 	private DepartmentService departmentService;
 	
-//	@Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
+	@Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
 	public void sendMail() {
 		departmentService.sendMailWithNewTx();
 		System.out.println("sent mail!");	
