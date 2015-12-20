@@ -16,10 +16,11 @@ public class Person {
 
 	public Person() {}
 	
-	public Person(Long id, String name, String position) {
+	public Person(Long id, String name, String position, int salary) {
 		this.id = id;
 		this.name = name;
 		this.position = position;
+		this.salary = salary;
 	}
 	
 	@Id
@@ -34,6 +35,9 @@ public class Person {
 	@Column(name="POSITION")
 	private String position;
 	
+	@Column(name="SALARY")
+	private int salary;
+	
 	@ManyToOne
 	@JoinColumn(name = "DEPARTMENT_ID", referencedColumnName = "ID")
 	private Department department;
@@ -41,6 +45,7 @@ public class Person {
 	public void merge(Person updatedPerson) {
 		this.name = updatedPerson.name();
 		this.position = updatedPerson.position();
+		this.salary = updatedPerson.salary();
 	}
 	
 	public Long id() {
@@ -51,6 +56,9 @@ public class Person {
 	}
 	public String name() {
 		return this.name;
+	}
+	public int salary() {
+		return this.salary;
 	}
 	public void department(Department department) {
 		this.department = department;

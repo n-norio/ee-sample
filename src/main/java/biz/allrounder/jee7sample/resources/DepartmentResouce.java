@@ -2,7 +2,6 @@ package biz.allrounder.jee7sample.resources;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.UUID;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,7 +18,6 @@ import javax.ws.rs.core.MediaType;
 import biz.allrounder.jee7sample.application.CDIService;
 import biz.allrounder.jee7sample.application.DepartmentService;
 import biz.allrounder.jee7sample.domain.model.Department;
-import biz.allrounder.jee7sample.domain.model.session.UserSession;
 
 @Path("/departments")
 @RequestScoped
@@ -53,13 +51,13 @@ public class DepartmentResouce {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void save(@Valid DepartmentJsonView department) {
-		departmentService.persist(department.buildProject());
+		departmentService.persist(department.buildDepartment());
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{deptId}")
 	public void update(@PathParam("deptId") long deptId, @Valid DepartmentJsonView department) {
-		departmentService.update(deptId, department.buildProject());
+		departmentService.update(deptId, department.buildDepartment());
 	}
 }

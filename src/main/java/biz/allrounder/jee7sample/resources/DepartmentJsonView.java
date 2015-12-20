@@ -39,7 +39,7 @@ public class DepartmentJsonView {
 		this.persons = persons;
 	}
 	
-	public Department buildProject() {
+	public Department buildDepartment() {
 		Department project = new Department(this.name);
 
 		for (PersonJsonView projectItemView: this.persons) {
@@ -54,7 +54,7 @@ public class DepartmentJsonView {
 		Collection<PersonJsonView> persons = new ArrayList<>();
 		for (Person person: department.persons()) {
 			persons.add(new PersonJsonView(
-					person.id(), person.name(), person.position()));
+					person.id(), person.name(), person.position(), person.salary()));
 		}
 		return new DepartmentJsonView(department.id(), department.name(), persons);
 	}
@@ -69,4 +69,5 @@ public class DepartmentJsonView {
 	@JsonProperty
 	@Valid
 	private Collection<PersonJsonView> persons;
+
 }
