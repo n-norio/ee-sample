@@ -35,7 +35,7 @@ public class ErrorServlet extends HttpServlet {
 			out.write(loadHtml("/Users/nakasai/tmp/invalidAccess.html"));
 			
 		} else if (statusCode >= 500 || statusCode <= 599) {
-			out.write(loadHtml("/Users/nakasai/tmp/error.html"));
+			out.write(loadHtml("/Users/xxxx/tmp/error.html"));
 		}
 	}
 
