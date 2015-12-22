@@ -1,5 +1,7 @@
 package biz.allrounder.jee7sample.resources;
 
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -39,6 +41,7 @@ public class PersonJsonView {
 	private Long id;
 	@JsonProperty
 	@NotEmpty
+	@Size(max=5)
 	private String name;
 	@JsonProperty
 	private String position;
