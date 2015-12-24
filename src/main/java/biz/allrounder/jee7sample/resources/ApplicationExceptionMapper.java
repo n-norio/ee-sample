@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import biz.allrounder.jee7sample.exception.ProjectApplicationException;
 
@@ -18,7 +18,7 @@ public class ApplicationExceptionMapper implements ExceptionMapper<Exception> {
 	@Override
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response toResponse(Exception exception) {
-		if (exception instanceof InvalidFormatException) {
+		if (exception instanceof JsonProcessingException) {
 			ViolationReport report = new ViolationReport("", "不正なリクエストが送信されました。");
 			return Response.status(Status.BAD_REQUEST).entity(report).build();
 		}
