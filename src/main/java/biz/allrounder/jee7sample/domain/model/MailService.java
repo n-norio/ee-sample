@@ -21,8 +21,8 @@ public class MailService {
 		try {
 			System.out.println("send mail.");
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("all.rounder.biz@gmail.com"));
-			Address toAddress = new InternetAddress("all.rounder.biz@gmail.com");
+			message.setFrom(new InternetAddress("xxx@gmail.com"));
+			Address toAddress = new InternetAddress("xxx@gmail.com");
 			message.addRecipient(Message.RecipientType.TO, toAddress);
 			message.setSubject("test");
 			message.setText("aiueo");
