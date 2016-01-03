@@ -5,7 +5,6 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.enterprise.event.Observes;
-import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
 
 import biz.allrounder.jee7sample.domain.model.MailService;
@@ -18,8 +17,7 @@ public class EventDispatcher {
 	private MailService mailService;
 	
 	@Asynchronous
-	@Lock(LockType.READ)
-	public void consumePersonEvent(@Observes(during = TransactionPhase.AFTER_SUCCESS) PersonWasRegisted personWasRegisted) {
+	public void consumePersonEvent(@Observes PersonWasRegisted personWasRegisted) {
 		mailService.sendMail();
 	}
 }

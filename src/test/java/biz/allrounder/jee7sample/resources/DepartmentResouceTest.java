@@ -42,11 +42,13 @@ public class DepartmentResouceTest {
 	public void add() throws JsonProcessingException {
 
 		Map<Object, Object> dept = new HashMap<>();
-		dept.put("name", "b");
+		dept.put("name", "abcdef");
+		
 		List<Object> persons = new ArrayList<>();
 		Map<Object, Object> director = new HashMap<>();
-		director.put("name", "a");
+		director.put("name", "あいうえお");
 		director.put("position", "boss");
+		director.put("salary", "100000");
 		persons.add(director);
 		dept.put("persons", persons);
 		
