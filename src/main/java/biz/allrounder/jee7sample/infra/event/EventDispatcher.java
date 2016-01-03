@@ -1,8 +1,6 @@
 package biz.allrounder.jee7sample.infra.event;
 
 import javax.ejb.Asynchronous;
-import javax.ejb.Lock;
-import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
