@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web xmlns="http://www.jboss.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+      http://www.jboss.com/xml/ns/javaee
+      http://www.jboss.org/j2ee/schema/jboss-web_5_1.xsd">
+
+	<security-domain>other</security-domain>
+<!-- 
+	<context-root>/jee7sample</context-root>
+	<security-role>
+		<role-name>batch</role-name>
+		<principal-name></principal-name>
+	</security-role>
+	<security-role>
+		<role-name>operator</role-name>
+		<principal-name></principal-name>
+	</security-role>
+ -->
+</jboss-web>

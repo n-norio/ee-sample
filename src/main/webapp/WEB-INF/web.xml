@@ -1,11 +1,37 @@
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
 
-    <!-- define global error handler -->
-    <error-page>
-        <location>/web/errors</location>
-    </error-page>
+	<!-- define global error handler -->
+	<error-page>
+		<location>/web/errors</location>
+	</error-page>
 
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>User Resource</web-resource-name>
+			<url-pattern>/api/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>operator</role-name>
+			<role-name>batch</role-name>
+			<role-name>staff</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>ApplicationRealm</realm-name>
+	</login-config>
+ 
+	<security-role>
+		<role-name>batch</role-name>
+	</security-role>
+	<security-role>
+		<role-name>operator</role-name>
+	</security-role>	
+	<security-role>
+		<role-name>staff</role-name>
+	</security-role>	
 </web-app>
