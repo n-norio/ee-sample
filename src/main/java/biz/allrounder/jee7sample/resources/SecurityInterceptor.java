@@ -106,7 +106,7 @@ public class SecurityInterceptor implements javax.ws.rs.container.ContainerReque
         //If both match then get the defined role for user from database and continue; else return isAllowed [false]
         //Access the database and do this part yourself
         //String userRole = userMgr.getUserRole(username);
-        String userRole = "ADMIN";
+        String userRole = "test";
          
         //Step 2. Verify user role
         if(rolesSet.contains(userRole))

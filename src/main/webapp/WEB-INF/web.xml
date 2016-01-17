@@ -17,6 +17,7 @@
 			<role-name>operator</role-name>
 			<role-name>batch</role-name>
 			<role-name>staff</role-name>
+			<role-name>test</role-name>
 		</auth-constraint>
 	</security-constraint>
 
@@ -33,5 +34,8 @@
 	</security-role>	
 	<security-role>
 		<role-name>staff</role-name>
+	</security-role>	
+	<security-role>
+		<role-name>test</role-name>
 	</security-role>	
 </web-app>

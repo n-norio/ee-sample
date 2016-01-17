@@ -18,5 +18,6 @@
 
 	<interceptors>
 		<class>biz.allrounder.jee7sample.application.SessionStartInterceptor</class>
+		<class>biz.allrounder.jee7sample.resources.LoggingInterceptor</class>
 	</interceptors>
 </beans>

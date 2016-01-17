@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.annotation.security.RolesAllowed;
 import javax.annotation.security.RunAs;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -22,22 +23,26 @@ import biz.allrounder.jee7sample.application.DepartmentService;
 import biz.allrounder.jee7sample.domain.model.Department;
 
 @Path("/departments")
-@RequestScoped
+//@RequestScoped
+@Stateless
 //@RunAs("batch")
-@RolesAllowed("batch")
+@RolesAllowed("test")
 public class DepartmentResouce {
 
 	@Inject
 	private DepartmentService departmentService;
 	@Inject
 	private CDIService cdiService;
+	@Inject
+	private UserId userId;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Logging(operationName="find")
-//@RolesAllowed("staff")
+@RolesAllowed("test")
 	public Collection<DepartmentJsonView> find() {
 		cdiService.test();
+		System.out.println(userId.get());
 		Collection<DepartmentJsonView> departments = new ArrayList<>();
 		for (Department department: departmentService.find()) {
 			departments.add(new DepartmentJsonView(department.id(), department.name()));
