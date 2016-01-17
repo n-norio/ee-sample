@@ -3,6 +3,8 @@ package biz.allrounder.jee7sample.resources;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.annotation.security.RolesAllowed;
+import javax.annotation.security.RunAs;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -21,6 +23,8 @@ import biz.allrounder.jee7sample.domain.model.Department;
 
 @Path("/departments")
 @RequestScoped
+//@RunAs("batch")
+@RolesAllowed("batch")
 public class DepartmentResouce {
 
 	@Inject
@@ -30,6 +34,8 @@ public class DepartmentResouce {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	@Logging(operationName="find")
+//@RolesAllowed("staff")
 	public Collection<DepartmentJsonView> find() {
 		cdiService.test();
 		Collection<DepartmentJsonView> departments = new ArrayList<>();
@@ -50,6 +56,7 @@ public class DepartmentResouce {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Logging
 	public void save(@Valid DepartmentJsonView department) {
 		departmentService.persist(department.buildDepartment());
 	}
